@@ -2,6 +2,10 @@ var http = require('http');
 var express = require('express');
 var bodyParser = require('body-parser');
 var config = require('./config/env/env');
+var mongodb = require('./config/mongodb');
+
+//routes:
+var user_routes = require('./api/user.routes');
 
 var app = express();
 
