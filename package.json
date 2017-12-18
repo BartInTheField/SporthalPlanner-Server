@@ -1,0 +1,48 @@
+{
+    "name": "sporthal-planner-server",
+    "version": "1.0.0",
+    "description": "Serverkant van de sporthal planner.",
+    "main": "server.js",
+    "scripts": {
+      "test": "node node_modules/mocha/bin/_mocha ./test/*test.js --reporter spec",
+      "start": "nodemon server.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/bartaveld/SporthalPlanner-Server"
+    },
+    "keywords": [
+      "node",
+      "mongodb",
+      "mongoose",
+      "server",
+      "sporthal huren"
+    ], 
+    "author": "Rick Voermans",
+    "contributors": [
+        {"name": "Erin Wallaard"},
+        {"name": "Niels van Dam"},
+        {"name": "Felix Boons"},
+        {"name": "Bart in 't veld"}
+    ],
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.17.2",
+        "express": "^4.15.2",
+        "express-jwt": "^5.3.0",
+        "hal": "^1.1.0",
+        "jwt-simple": "^0.5.1",
+        "moment": "^2.18.1",
+        "mongoose": "4.8.x",
+        "morgan": "^1.8.1"
+      },
+      "devDependencies": {
+        "chai": "^3.5.0",
+        "chai-http": "^3.0.0",
+        "gulp": "^3.9.1",
+        "gulp-istanbul": "^1.1.2",
+        "gulp-mocha": "^4.3.1",
+        "mocha": "^3.3.0",
+        "nodemon": "^1.11.0"
+      }
+}
