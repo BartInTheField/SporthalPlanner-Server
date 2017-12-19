@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const SportsHallField = require('./sportshallfield.model.js');
+const SportsHallField = require('./sportshallfield.model');
 
 const BookingSchema = new Schema({
     day: {
