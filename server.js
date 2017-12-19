@@ -6,6 +6,7 @@ var mongodb = require('./config/mongodb');
 
 //routes:
 var user_routes = require('./api/user.routes');
+var bookings = require('./api/booking.routes');
 
 var app = express();
 
@@ -20,6 +21,8 @@ app.use(bodyParser.json({
 
 app.set('port', (config.env.webPort));
 app.set('env', ('development'));
+
+app.use('/api/bookings', bookings);
 
 //CORS Headers:
 app.use(function (req, res, next) {
