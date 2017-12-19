@@ -19,7 +19,8 @@ const BookingSchema = new Schema({
         type: Number,
         required: true
     },
-    sportsHallField: SportsHallField
+    sportsHallField: SportsHallField,
+    status: Number
 });
 
 const Booking = mongoose.model('booking', BookingSchema);
