@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var config = require('./config/env/env');
 var mongodb = require('./config/mongodb');
+const bookingRoutes = require('./api/booking.routes');
 
 //routes:
 var user_routes = require('./api/user.routes');
@@ -30,6 +31,8 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
+
+app.use('/api/v1', bookingRoutes);
 
 //Default routes:
 app.use('*', function(req, res) {
