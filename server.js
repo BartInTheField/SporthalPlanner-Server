@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/api/v1', bookingRoutes);
+app.use('/api', bookingRoutes);
 
 //Default routes:
 app.use('*', function(req, res) {
