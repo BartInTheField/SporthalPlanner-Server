@@ -24,7 +24,7 @@ app.set('port', (config.env.webPort));
 app.set('env', ('development'));
 
 app.use('/api/bookings', bookings);
-app.use('/api/users', users)
+app.use('/api/users', users);
 
 //CORS Headers:
 app.use(function (req, res, next) {
