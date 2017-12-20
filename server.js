@@ -7,6 +7,7 @@ const bookingRoutes = require('./api/booking.routes');
 
 //routes:
 var bookings = require('./api/booking.routes');
+var openinghours = require('./api/openinghours.routes');
 var users = require('./api/user.routes');
 
 var app = express();
@@ -23,6 +24,7 @@ app.use(bodyParser.json({
 app.set('port', (config.env.webPort));
 app.set('env', ('development'));
 
+app.use('/api/openinghours', openinghours);
 app.use('/api/bookings', bookings);
 app.use('/api/users', users);
 

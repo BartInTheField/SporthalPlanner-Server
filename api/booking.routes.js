@@ -1,6 +1,6 @@
 //Booking routes
-var express = require('express');
-var routes = express.Router();
+const express = require('express');
+const routes = express.Router();
 
 const API = require('../config/api_requester');
 
