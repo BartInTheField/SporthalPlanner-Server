@@ -1,8 +1,4 @@
-/**e
- * Created by Felix on 19-12-2017.
- */
-
-// const https = require('https');
+//Felix C
 const http = require('http');
 const host = 'localhost'; //checken of deze port geldig blijft
 
