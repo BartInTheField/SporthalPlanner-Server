@@ -3,7 +3,7 @@ var express = require('express');
 var routes = express.Router();
 
 const Booking = require('../model/booking.model');
-const API = require('../config/api_requester');]
+const API = require('../config/api_requester');
 
 //Boeking toevoegen:
 routes.post('', function(req, res) {

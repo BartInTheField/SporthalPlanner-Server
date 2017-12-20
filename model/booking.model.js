@@ -9,7 +9,7 @@ const BookingSchema = new Schema({
     },
     startingTime: {
         type: Date,
-        required = true
+        required: true
     },
     endingTime: {
         type: Date,
