@@ -19,14 +19,14 @@ routes.post('', function(req, res) {
     });
 
     //POST een booking naar de NoSql database
-    // const newBooking = new Booking(bookingBody);
+    const newBooking = new Booking(bookingBody);
 
-    // newBooking.save()
-    //     .then(() => {
-    //         res.status(200).json(newBooking);
-    //     }).catch((error) => {
-    //         res.status(400).json(error);
-    // });
+    newBooking.save()
+        .then(() => {
+            res.status(200).json(newBooking);
+        }).catch((error) => {
+            res.status(400).json(error);
+    });
 });
 
 //Retrieve booking data
