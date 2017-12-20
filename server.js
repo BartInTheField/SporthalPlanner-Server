@@ -7,6 +7,7 @@ var mongodb = require('./config/mongodb');
 //routes:
 const bookings = require('./api/booking.routes');
 const users = require('./api/user.routes');
+const openinghours = require('./api/openinghours.routes');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use('/api/openinghours', openinghours);
 app.use('/api/bookings', bookings);
 app.use('/api/users', users);
 
