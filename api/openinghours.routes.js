@@ -1,8 +1,8 @@
-//Booking routes
+//Openinghours routes
 var express = require('express');
 var routes = express.Router();
 
-const Booking = require('../model/openinghours.model');
+const OpeningHours = require('../model/openinghours.model');
 const API = require('../config/api_requester');
 
 
