@@ -1,15 +1,15 @@
-var http = require('http');
-var express = require('express');
-var bodyParser = require('body-parser');
-var config = require('./config/env/env');
-var mongodb = require('./config/mongodb');
+const http = require('http');
+const express = require('express');
+const bodyParser = require('body-parser');
+const config = require('./config/env/env');
+const mongodb = require('./config/mongodb');
 
 //routes:
 const bookings = require('./api/booking.routes');
 const users = require('./api/user.routes');
 const openinghours = require('./api/openinghours.routes');
 
-var app = express();
+const app = express();
 
 //Door bodyParser kunnen we de body van een API request gebruiken
 app.use(bodyParser.urlencoded({
