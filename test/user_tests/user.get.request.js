@@ -7,7 +7,7 @@ var should = chai.should();
 chai.use(chaiHttp);
 
 
-describe('User routes tests', () => {
+describe('User GET routes tests', () => {
     //Delete all users first
     beforeEach((done) => {
         
