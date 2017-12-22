@@ -10,6 +10,6 @@ chai.use(chaiHttp);
 describe('User routes tests', () => {
     //Delete all users first
     beforeEach((done) => {
-
+        
     });
 });
