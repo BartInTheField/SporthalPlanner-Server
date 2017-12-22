@@ -8,15 +8,15 @@ const BookingSchema = new Schema({
         required: true
     },
     startingTime: {
-        type: Date,
-        required = true
+        type: String,
+        required: true
     },
     endingTime: {
-        type: Date,
+        type: String,
         required: true
     },
     userId: {
-        type: Number,
+        type: String,
         required: true
     },
     sportsHallField: SportsHallField,

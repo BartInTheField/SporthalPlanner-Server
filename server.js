@@ -1,15 +1,15 @@
-var http = require('http');
-var express = require('express');
-var bodyParser = require('body-parser');
-var config = require('./config/env/env');
-var mongodb = require('./config/mongodb');
-const bookingRoutes = require('./api/booking.routes');
+const http = require('http');
+const express = require('express');
+const bodyParser = require('body-parser');
+const config = require('./config/env/env');
+const mongodb = require('./config/mongodb');
 
 //routes:
-var bookings = require('./api/booking.routes');
-var users = require('./api/user.routes');
+const bookings = require('./api/booking.routes');
+const users = require('./api/user.routes');
+const openinghours = require('./api/openinghours.routes');
 
-var app = express();
+const app = express();
 
 //Door bodyParser kunnen we de body van een API request gebruiken
 app.use(bodyParser.urlencoded({
@@ -23,9 +23,6 @@ app.use(bodyParser.json({
 app.set('port', (config.env.webPort));
 app.set('env', ('development'));
 
-app.use('/api/bookings', bookings);
-app.use('/api/users', users)
-
 //CORS Headers:
 app.use(function (req, res, next) {
     //Deze port mag connecten naar je server:
@@ -36,7 +33,9 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/api', bookingRoutes);
+app.use('/api/openinghours', openinghours);
+app.use('/api/bookings', bookings);
+app.use('/api/users', users);
 
 //Default routes:
 app.use('*', function(req, res) {
