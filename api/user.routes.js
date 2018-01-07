@@ -61,7 +61,7 @@ routes.post('/auth', function(req, res) {
     })
 });
 
-//Regristreren (Alleen server-side):
+//Registreren (Alleen server-side):
 routes.post('/', function(req, res) {
     let hash = bcrypt.hashSync(req.body.password,10);
 

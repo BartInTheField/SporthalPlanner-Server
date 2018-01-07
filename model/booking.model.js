@@ -5,19 +5,19 @@ const SportsHallField = require('./sportshallfield.model');
 const BookingSchema = new Schema({
     day: {
         type: Date,
-        required: true
+        required: [true, 'Day is required.']
     },
     startingTime: {
         type: String,
-        required: true
+        required: [true, 'Starting time is required.']
     },
     endingTime: {
         type: String,
-        required: true
+        required: [true, 'Ending time is required.']
     },
     userId: {
         type: String,
-        required: true
+        required: [true, 'User ID is required.']
     },
     sportsHallField: SportsHallField,
     status: Number
