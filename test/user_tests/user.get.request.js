@@ -8,8 +8,35 @@ chai.use(chaiHttp);
 
 
 describe('User GET routes tests', () => {
-    //Delete all users first
-    beforeEach((done) => {
-        
+    let testUser
+
+    //Eerst user aanmaken zodat je die weer kan opvragen
+    beforEach((done) => {
+        testUser = new User({
+            email: 'testmail@mail.nl',
+            username: 'testUser',
+            password: 'hashdingen'
+        });
+
+        testUser.save().then(() => done());
+    });
+
+
+    it('Can retrieve users', (done) => {
+        chai.request(server)
+            .get('/api/users')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('array');
+                done();        
+        });
+    });
+
+    it('Can retrieve 1 user', (done) => {
+        chai.request(server)
+            .get('/api/users/1')
+            .end((err, res) => {
+                done();
+        });
     });
 });
