@@ -36,6 +36,7 @@ describe('User GET routes tests', () => {
         chai.request(server)
             .get('/api/users/1')
             .end((err, res) => {
+                res.should.have.status(200);
                 done();
         });
     });
