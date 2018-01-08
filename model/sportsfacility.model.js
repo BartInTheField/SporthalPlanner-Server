@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Company = require('./company.model');
 const OpeningHours = require('./openinghours.model');
+const ClosingDays = require('./closingdays.model');
+const SportsHalls = require('./sportshall.model');
 
 const SportsFacilitySchema = new Schema({
     name: {
@@ -24,8 +25,14 @@ const SportsFacilitySchema = new Schema({
         type: String,
         required: true
     },
-    company: Company,
-    openingHours: OpeningHours
+    openingHours: OpeningHours,
+    closingDays: [ClosingDays],
+    sportsHalls: [{
+        type: Schema.ObjectId,
+        ref: 'sportshall'
+    }]
 });
 
-module.exports = SportsFacilitySchema;
+const SportsFacility = mongoose.model('sportsfacility', SportsFacilitySchema);
+
+module.exports = SportsFacility;

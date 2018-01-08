@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const SportsFacility = require('./sportsfacility.model');
+const SportsHallField = require('./sportshallfield.model');
 
 const SportsHallSchema = new Schema({
     name: {
@@ -8,8 +8,9 @@ const SportsHallSchema = new Schema({
         required: true
     },
     location: String,
-    description: String,
-    sportsFacility: SportsFacility
+    description: String
 });
 
-module.exports = SportsHallSchema;
+const SportsHall = mongoose.model('sportshall', SportsHallSchema);
+
+module.exports = SportsHall;
