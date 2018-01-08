@@ -1,5 +1,3 @@
-var secret = 'geheimpie';
-
 var env = {
     webPort: process.env.PORT || 6969,
     dbHost: process.env.DB_HOST || 'localhost',
@@ -16,6 +14,5 @@ var dburl = process.env.NODE_ENV === 'production' ?
 
 module.exports = {
     env: env,
-    dburl: dburl,
-    secret: secret
+    dburl: dburl
 }

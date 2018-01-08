@@ -4,7 +4,7 @@
   "description": "Serverkant van de sporthal planner.",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon --exec mocha -R min",
+    "test": "node node_modules/mocha/bin/_mocha ./test/*test.js --reporter spec",
     "start": "nodemon server.js"
   },
   "repository": {
@@ -35,7 +35,6 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^1.0.3",
     "body-parser": "^1.17.2",
     "express": "^4.15.2",
     "express-jwt": "^5.3.0",
@@ -44,7 +43,8 @@
     "moment": "^2.18.1",
     "mongodb": "^3.0.0-rc0",
     "mongoose": "4.8.x",
-    "morgan": "^1.8.1"
+    "morgan": "^1.8.1",
+    "mysql": "^2.15.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

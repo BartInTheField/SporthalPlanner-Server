@@ -1,16 +1,14 @@
-const http = require('http');
-const express = require('express');
-const bodyParser = require('body-parser');
-const config = require('./config/env/env');
-const mongodb = require('./config/mongodb');
+var http = require('http');
+var express = require('express');
+var bodyParser = require('body-parser');
+var config = require('./config/env/env');
+var mongodb = require('./config/mongodb');
+const bookingRoutes = require('./api/booking.routes');
 
 //routes:
-const bookings = require('./api/booking.routes');
-const users = require('./api/user.routes');
-const openinghours = require('./api/openinghours.routes');
-const sportsfacilities = require('./api/sportsfacility.routes');
+var user_routes = require('./api/user.routes');
 
-const app = express();
+var app = express();
 
 //Door bodyParser kunnen we de body van een API request gebruiken
 app.use(bodyParser.urlencoded({
@@ -34,10 +32,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/api/openinghours', openinghours);
-app.use('/api/bookings', bookings);
-app.use('/api/users', users);
-app.use('/api/sportsfacilities', sportsfacilities);
+app.use('/api', bookingRoutes);
 
 //Default routes:
 app.use('*', function(req, res) {
