@@ -32,7 +32,21 @@ routes.put('/:id/closingdays', function(req, res) {
 
 //Closingday verwijderen:
 routes.delete('', function(req, res) {
+    let id = req.params.id;
+    let index = req.params.index;
+    let closingday;
 
+    SportsFacility.findById(id)
+        .then((facility) => {
+            closingday = facility.closingdays[index];
+            facility.closingdays.splice(index, 1);
+            facility.save()
+            .then(() => {
+                res.status(200).json(facility);
+        }).catch((error) => {
+            res.status(400).json(error);
+        });
+    });
 });
 
 module.exports = routes;
