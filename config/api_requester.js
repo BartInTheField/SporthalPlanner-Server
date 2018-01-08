@@ -23,13 +23,15 @@ const request = function performRequest(endpoint, method, data, cb) {
         let responseString = '';
 
         res.on('data', function(data) {
-            responseString += data;
+            responseString += data;         
         });
 
         res.on('end', function() {
-            console.log(responseString);
-            const response = JSON.parse(responseString);
-            cb(response);
+            if (responseString !== ''){
+                const response = JSON.parse(responseString);
+                cb(response);
+            }
+            cb({ message: 'No content'})
         });
         res.on('error', (error) => {
             cb({ error: error });
