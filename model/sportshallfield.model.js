@@ -1,13 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const SportsHall = require('./sportshall.model');
-const Field = require('./field.model');
 
 const SportsHallFieldSchema = new Schema({
     amountOfFields: Number,
     price: Number,
-    sportsHall: SportsHall,
-    field: Field
+    sportsHall: {
+        type: Schema.ObjectId,
+        ref: 'sportshall'
+    },
+    field: {
+        type: Schema.ObjectId,
+        ref: 'field'
+    }
 });
+
+// const SportsHallField = mongoose.model('sportshallfield', SportsHallFieldSchema); //Geeft error
 
 module.exports = SportsHallFieldSchema;
