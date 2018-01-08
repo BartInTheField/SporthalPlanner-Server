@@ -30,4 +30,6 @@ const SportsFacilitySchema = new Schema({
     closingDays: [ClosingDays]
 });
 
-module.exports = SportsFacilitySchema;
+const SportsFacility = mongoose.model('sportsfacility', SportsFacilitySchema);
+
+module.exports = SportsFacility;
