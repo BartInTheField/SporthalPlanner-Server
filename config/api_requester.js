@@ -30,8 +30,9 @@ const request = function performRequest(endpoint, method, data, cb) {
             if (responseString !== ''){
                 const response = JSON.parse(responseString);
                 cb(response);
+            } else {
+                cb({ message: 'No content'})
             }
-            cb({ message: 'No content'})
         });
         res.on('error', (error) => {
             cb({ error: error });
