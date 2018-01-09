@@ -8,7 +8,7 @@ const mongodb = require('./config/mongodb');
 const bookings = require('./api/booking.routes');
 const users = require('./api/user.routes');
 const openinghours = require('./api/openinghours.routes');
-const sportsfacilities = require('./api/sportsfacility.routes');
+const sportsfacilities = require('./api/closingdays.routes');
 
 const app = express();
 
