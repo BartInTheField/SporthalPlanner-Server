@@ -32,4 +32,8 @@ describe('User POST routes tests', () => {
                 done();
         });
     });
+
+    it('Can log in with an existing user', (done) => {
+        done();
+    });
 });
