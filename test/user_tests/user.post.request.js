@@ -34,6 +34,17 @@ describe('User POST routes tests', () => {
     });
 
     it('Can log in with an existing user', (done) => {
-        done();
+        let user = new User({
+            email: 'login@user.nl',
+            username: 'ILogInNow',
+            password: 'wederomHashS'
+        });
+
+        chai.request(server)
+            .post('/api/users/auth')
+            .send(user)
+            .end((err, res) => {
+                done();
+        });
     });
 });
