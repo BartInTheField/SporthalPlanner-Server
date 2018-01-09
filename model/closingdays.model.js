@@ -13,4 +13,4 @@ const ClosingDaysSchema = new Schema({
 
 const ClosingDays = mongoose.model('closingdays', ClosingDaysSchema);
 
-module.exports = ClosingDaysSchema;
+module.exports = ClosingDays;
