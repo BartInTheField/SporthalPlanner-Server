@@ -5,7 +5,19 @@ var routes = express.Router();
 const SportsFacility = require('../model/sportsfacility.model');
 const API = require('../config/api_requester');
 
-//Closingdays opvragen:
+//Alle closingdays opvragen:
+routes.get('/', function(req, res, done) {
+
+  API.request('/api/sportsfacilities/', 'GET', {}, (response) => {
+    if (response.error) {
+      res.status(400).json({ error: 'Could not retrieve Sportsfacility' });
+    } else {
+        res.status(200).json(response);
+    }
+  });
+});
+
+//Eén closingdays opvragen:
 routes.get('/:id', function(req, res) {
   const id = req.params.id;
 
