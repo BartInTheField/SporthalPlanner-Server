@@ -1,10 +1,9 @@
 //Sportsfacility Routes
 var express = require('express');
 var routes = express.Router();
-const ClosingDays = require('./closingdays.routes');
 
-const SportsFacility = require('../model/sportsfacility.model');
 const API = require('../config/api_requester');
+const ClosingDays = require('../model/closingdays.model');
 
 //Alle closingdays opvragen:
 routes.get('/', function(req, res, done) {
@@ -32,16 +31,19 @@ routes.get('/:id', function(req, res) {
 });
 
 //Closingday toevoegen:
-routes.put('/:id/closingdays', function(req, res, done) {
-    const closingDay = new ClosingDays(req.body);
+routes.post('', function(req, res, done) {
+    const payload = req.body;
+    const closingDay = new ClosingDays(payload);
 
     closingDay.save()
         .then((closingDay) => {
             res.status(200).json(closingDay);
+            done();
         })
         .catch((error) => {
             console.log(error);
             res.status(400).json({ error: "Could not create closing day" });
+            done();
         });
 });
 
