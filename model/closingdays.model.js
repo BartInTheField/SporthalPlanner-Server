@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const SportsFacility = require('./sportsfacility.model');
 
 const ClosingDaysSchema = new Schema({
     date: {
@@ -7,6 +8,7 @@ const ClosingDaysSchema = new Schema({
         required: [true, 'Date is required.']
     },
     reason: String,
+    sportsFacility: SportsFacility
 });
 
 const ClosingDays = mongoose.model('closingdays', ClosingDaysSchema);
