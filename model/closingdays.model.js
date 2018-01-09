@@ -8,7 +8,10 @@ const ClosingDaysSchema = new Schema({
         required: [true, 'Date is required.']
     },
     reason: String,
-    sportsFacility: SportsFacility
+    sportsFacility: {
+        type: Schema.ObjectId,
+        ref: 'sportsfacility'
+    }
 });
 
 const ClosingDays = mongoose.model('closingdays', ClosingDaysSchema);
