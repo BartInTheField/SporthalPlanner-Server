@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const OpeningHours = require('./openinghours.model');
-const ClosingDays = require('./closingdays.model');
-const SportsHalls = require('./sportshall.model');
 
 const SportsFacilitySchema = new Schema({
     name: {
@@ -26,7 +24,6 @@ const SportsFacilitySchema = new Schema({
         required: true
     },
     openingHours: OpeningHours,
-    closingDays: [ClosingDays],
     sportsHalls: [{
         type: Schema.ObjectId,
         ref: 'sportshall'
