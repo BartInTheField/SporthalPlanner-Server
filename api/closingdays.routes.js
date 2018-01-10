@@ -39,12 +39,10 @@ routes.post('', function(req, res, done) {
     closingDay.save()
         .then((closingDay) => {
             res.status(200).json(closingDay);
-            done();
         })
         .catch((error) => {
             console.log(error);
             res.status(400).json({ error: "Could not create closing day" });
-            done();
         });
 });
 

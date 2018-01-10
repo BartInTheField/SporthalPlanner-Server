@@ -11,6 +11,7 @@ routes.get('/', function(req, res, done) {
     let mongoCount;
     let mongoFacilities = [];
     let amountSaved = 0;
+    let existingSportsfacilities;
 
     API.request('/api/sportsfacilities/', 'GET', {}, (response) => {
         if (response.error) {
@@ -23,6 +24,7 @@ routes.get('/', function(req, res, done) {
             SportsFacility.find({})
                 .then((sfs) => {
                     mongoCount = sfs !== null ? sfs.length : 0;
+                    existingSportsfacilities = sfs;
                 })
                 .then(() => {
 
@@ -63,6 +65,9 @@ routes.get('/', function(req, res, done) {
                                         });
                                 }
                         })
+                    } else {
+                        res.status(200).json(existingSportsfacilities);
+                        done();
                     }
                 });
         }
