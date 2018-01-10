@@ -4,6 +4,7 @@ var routes = express.Router();
 
 const API = require('../config/api_requester');
 const ClosingDays = require('../model/closingdays.model');
+const SportsFacility = require('../model/sportsfacility.model');
 
 //Alle closingdays opvragen:
 routes.get('/', function(req, res, done) {
