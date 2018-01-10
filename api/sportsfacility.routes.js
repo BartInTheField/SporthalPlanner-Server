@@ -9,6 +9,8 @@ const SportsFacility = require('../model/sportsfacility.model');
 routes.get('/', function(req, res, done) {
     let aspCount;
     let mongoCount;
+    let mongoFacilities = [];
+    let amountSaved = 0;
 
     API.request('/api/sportsfacilities/', 'GET', {}, (response) => {
         if (response.error) {
@@ -45,15 +47,24 @@ routes.get('/', function(req, res, done) {
                                     for(let j = 0; j < response[i]._embedded.SportsHalls; j++) {
                                         sportsFacility.sportsHalls = response[i]._embedded.SportsHalls[j].sportsHallId;
                                     }
+
+                                    //Save newly created sportsFacility
+                                    //and increment amountSaved
                                     sportsFacility.save()
-                                        .then(() => {
-                                            done();
-                                        })
+                                        .then((sf) => {
+                                            mongoFacilities.push(sf);
+                                            amountSaved++;
+
+                                            //Send response only when all items are saved
+                                            if(amountSaved === aspCount) {
+                                                res.status(200).json(mongoFacilities);
+                                                done();
+                                            }
+                                        });
                                 }
-                            })
+                        })
                     }
                 });
-            res.status(200).json(response);
         }
     });
 });
