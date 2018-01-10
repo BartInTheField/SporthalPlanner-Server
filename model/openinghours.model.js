@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const OpeningHoursSchema = new Schema({
+    openingHoursId: Number,
     monday: {
         type: String,
         required: true

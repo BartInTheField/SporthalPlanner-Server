@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const SportsHallField = require('./sportshallfield.model');
 
 const SportsHallSchema = new Schema({
+    sportsHallId: Schema.ObjectId,
     name: {
         type: String,
         required: true
