@@ -11,6 +11,7 @@ const openinghours = require('./api/openinghours.routes');
 const dayoverview = require('./api/dayoverview.routes');
 const closingdays = require('./api/closingdays.routes');
 const sportsFacility = require('./api/sportsfacility.routes');
+const customer = require('./api/customer.routes');
 
 const app = express();
 
@@ -42,6 +43,7 @@ app.use('/api/bookings', bookings);
 app.use('/api/users', users);
 app.use('/api/closingdays', closingdays);
 app.use('/api/sportsfacilities', sportsFacility);
+app.use('/api/customers', customer);
 
 //Default routes:
 app.use('*', function(req, res) {

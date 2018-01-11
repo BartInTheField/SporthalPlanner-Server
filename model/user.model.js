@@ -6,7 +6,7 @@ const regEx = new RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`
 const UserSchema = new Schema({
     email: { 
         type: String, 
-        required: [true, 'Last name is required.'], 
+        required: [true, 'Email is required.'], 
         unique: true,
         validate: {
             validator: (value) => regEx.test(value),
