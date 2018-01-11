@@ -2,17 +2,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CustomerSchema = new Schema({
-    username: {
+    sporthalHurenUsername: {
+        type: String,
+        required: [false]
+    },
+    sporthalHurenUserId: {
         type: String,
         required: [false]
     },
     userId: {
         type: String,
-        required: [false]
-    },
-    customerId: {
-        type: Number,
-        required: [true, 'Customer Id is required.']
+        required: [true, 'userId is required.']
     },
     firstName: {
         type: String,
@@ -24,10 +24,10 @@ const CustomerSchema = new Schema({
     },
     isSporthalHurenCustomer: {
         type: Boolean,
-        required: [true]
+        default: false
     },
 });
 
 const Customer = mongoose.model('customer', CustomerSchema);
 
-module.exports = customerId;
+module.exports = Customer;
