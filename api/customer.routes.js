@@ -1,4 +1,4 @@
-//Booking routes
+//Customer routes
 var express = require('express');
 var routes = express.Router();
 
