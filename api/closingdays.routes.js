@@ -8,26 +8,28 @@ const SportsFacility = require('../model/sportsfacility.model');
 
 //Alle closingdays opvragen:
 routes.get('/', function(req, res, done) {
-  API.request('/api/sportsfacilities/', 'GET', {}, (response) => {
-    if (response.error) {
-      res.status(400).json({ error: 'Could not retrieve Sportsfacility' });
-    } else {
-        res.status(200).json(response);
-    }
+  ClosingDays.find({})
+    .then((closingdays) => {
+    res.status(200).json(closingdays);
+})
+  .catch(error => {
+    res.status(401).json({message:'Error'})
+      console.log(error);
   });
 });
 
 //Eén closingdays opvragen:
 routes.get('/:id', function(req, res) {
   const id = req.params.id;
+  ClosingDays.findOne({_id:id})
+    .then((closingdays) => {
+    res.status(200).json(closingdays);
+})
+  .catch(error => {
+    res.status(401).json({message:'Error'})
+  console.log(error);
+});
 
-  API.request('/api/sportsfacilities/'+id, 'GET', {}, (response) => {
-    if (response.error) {
-      res.status(400).json({ error: 'Could not retrieve Sportsfacility' });
-    } else {
-      res.status(200).json(response);
-    }
-  });
 });
 
 //Closingday toevoegen:
