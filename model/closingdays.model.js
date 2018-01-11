@@ -10,7 +10,8 @@ const ClosingDaysSchema = new Schema({
     reason: String,
     sportsFacility: {
         type: Schema.ObjectId,
-        ref: 'sportsfacility'
+        ref: 'sportsfacility',
+        required: true
     }
 });
 

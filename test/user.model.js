@@ -21,7 +21,7 @@ describe('Validating users', () => {
             .send({ email: 'tester@sporthalplanner.nl',
                 username: 'tester',
                 password: password })
-            .end((err,res) => {
+            .end((err, res) => {
                 userId = res.body._id;
                 hash = res.body.password;
                 done();

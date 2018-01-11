@@ -15,18 +15,16 @@ routes.post('', function(req, res) {
         if(response.error) {
             res.status(400).json({error: 'POST request failed'});
         } else {
-            res.status(200).json(response);
+            //POST een booking naar de NoSql database
+            const newBooking = new Booking(bookingBody);
+
+            newBooking.save()
+                .then(() => {
+                    res.status(200).json(newBooking);
+                }).catch((error) => {
+                res.status(400).json(error);
+            });
         }
-    });
-
-    //POST een booking naar de NoSql database
-    const newBooking = new Booking(bookingBody);
-
-    newBooking.save()
-        .then(() => {
-            res.status(200).json(newBooking);
-        }).catch((error) => {
-            res.status(400).json(error);
     });
 });
 
