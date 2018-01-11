@@ -1,4 +1,4 @@
-//Sportsfacility Routes
+//Closingdays Routes
 var express = require('express');
 var routes = express.Router();
 
@@ -8,7 +8,6 @@ const SportsFacility = require('../model/sportsfacility.model');
 
 //Alle closingdays opvragen:
 routes.get('/', function(req, res, done) {
-
   API.request('/api/sportsfacilities/', 'GET', {}, (response) => {
     if (response.error) {
       res.status(400).json({ error: 'Could not retrieve Sportsfacility' });
@@ -47,21 +46,21 @@ routes.post('', function(req, res, done) {
 });
 
 //Closingday verwijderen:
-routes.delete('', function(req, res) {
-    let id = req.params.id;
-    let index = req.params.index;
-    let closingday;
+routes.delete('/:id', function(req, res) {
+    res.contentType('application/json');
 
-    SportsFacility.findById(id)
-        .then((facility) => {
-            closingday = facility.closingdays[index];
-            facility.closingdays.splice(index, 1);
-            facility.save()
-            .then(() => {
-                res.status(200).json(facility);
+    let id = req.params.id;
+
+    ClosingDays.findByIdAndRemove({_id: id})
+        .then((closingDay) => {
+            if(closingDay)
+                res.status(200).json(closingDay);
+            else 
+                res.status(200).json({
+                    Error: 'Unable to find a closing day with given ID'
+                });
         }).catch((error) => {
             res.status(400).json(error);
-        });
     });
 });
 
