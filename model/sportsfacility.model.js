@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const OpeningHours = require('./openinghours.model');
 
 const SportsFacilitySchema = new Schema({
+    SportsFacilityId: Schema.ObjectId,
     name: {
         type: String,
         required: true
