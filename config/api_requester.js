@@ -11,7 +11,7 @@ const request = function performRequest(endpoint, method, data, cb) {
 
     const options = {
         host: host,
-        port: 55512,
+        port: 56661,
         path: endpoint,
         method: method,
         headers: headers

@@ -34,7 +34,7 @@ routes.get('/:userid', function(req, res) {
         });
 });
 
-//Update customer data from a id
+//Update customer data from a customer id
 routes.put('/:id', function(req, res) {
     const paramId = req.params.id;
     const customer = req.body;
@@ -46,7 +46,7 @@ routes.put('/:id', function(req, res) {
         });
 });
 
-//Delete a customer
+//Delete a customer using customer id
 routes.delete('/:id', function(req, res) {
     const paramId = req.params.id;
 
