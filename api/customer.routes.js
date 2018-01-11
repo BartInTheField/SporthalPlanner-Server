@@ -21,5 +21,42 @@ routes.post('', function(req, res) {
     });
 });
 
+//Retrieve customer data from a user
+routes.get('/:userid', function(req, res) {
+    const paramUserId = req.params.userid;
+    Customer.find({ userId : paramUserId})
+        .then((users) => {
+            res.status(200).json(users);
+        })
+        .catch(error => {
+            res.status(401).json({message:'Error'})
+            console.log(error);
+        });
+});
+
+//Update customer data from a id
+routes.put('/:id', function(req, res) {
+    const paramId = req.params.id;
+    const customer = req.body;
+    Customer.findByIdAndUpdate({_id: paramId}, customer)
+        .then((customer) => Customer.findById({_id: paramId}).then((customer) => res.status(200).json(customer)))
+        .catch(error => {
+            res.status(401).json({message:'Error'})
+            console.log(error);
+        });
+});
+
+//Delete a customer
+routes.delete('/:id', function(req, res) {
+    const paramId = req.params.id;
+
+    Customer.findByIdAndRemove({_id: paramId})
+        .then(customer => res.status(200).json(customer))
+        .catch(error => {
+            res.status(401).json({message:'Error'})
+            console.log(error);
+        });
+}); 
+
 
 module.exports = routes;
