@@ -2,7 +2,6 @@
 var express = require('express');
 var routes = express.Router();
 
-const API = require('../config/api_requester');
 const ClosingDays = require('../model/closingdays.model');
 const SportsFacility = require('../model/sportsfacility.model');
 
@@ -10,26 +9,22 @@ const SportsFacility = require('../model/sportsfacility.model');
 routes.get('/', function(req, res, done) {
   ClosingDays.find({})
     .then((closingdays) => {
-    res.status(200).json(closingdays);
-})
-  .catch(error => {
-    res.status(401).json({message:'Error'})
-      console.log(error);
-  });
+        res.status(200).json(closingdays);
+    }).catch(error => {
+        res.status(401).json(error);
+    });
 });
 
 //Eén closingdays opvragen:
 routes.get('/:id', function(req, res) {
   const id = req.params.id;
+
   ClosingDays.findOne({_id:id})
     .then((closingdays) => {
-    res.status(200).json(closingdays);
-})
-  .catch(error => {
-    res.status(401).json({message:'Error'})
-  console.log(error);
-});
-
+        res.status(200).json(closingdays);
+    }).catch(error => {
+        res.status(401).json(error);
+    });
 });
 
 //Closingday toevoegen:
@@ -44,7 +39,7 @@ routes.post('', function(req, res, done) {
         .catch((error) => {
             console.log(error);
             res.status(400).json({ error: "Could not create closing day" });
-        });
+    });
 });
 
 //Closingday verwijderen:
