@@ -1,4 +1,4 @@
-//Sportsfacility Routes
+//Closingdays Routes
 var express = require('express');
 var routes = express.Router();
 
@@ -14,8 +14,8 @@ routes.get('/', function(req, res, done) {
 })
   .catch(error => {
     res.status(401).json({message:'Error'})
-  console.log(error);
-});
+      console.log(error);
+  });
 });
 
 //Eén closingdays opvragen:
@@ -48,8 +48,22 @@ routes.post('', function(req, res, done) {
 });
 
 //Closingday verwijderen:
-routes.delete('', function(req, res) {
+routes.delete('/:id', function(req, res) {
+    res.contentType('application/json');
 
+    let id = req.params.id;
+
+    ClosingDays.findByIdAndRemove({_id: id})
+        .then((closingDay) => {
+            if(closingDay)
+                res.status(200).json(closingDay);
+            else 
+                res.status(200).json({
+                    Error: 'Unable to find a closing day with given ID'
+                });
+        }).catch((error) => {
+            res.status(400).json(error);
+    });
 });
 
 module.exports = routes;
