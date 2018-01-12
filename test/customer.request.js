@@ -8,9 +8,10 @@ describe('Testing customers routes:', () => {
   let customerId;
   let putCustomer;
   let putId;
+  let singleCustomerId;
 
   customer = new Customer({
-    'userId':'a',
+    'userId':'testid12349',
     'sporthalHurenUsername':'Henkie420',
     'sporthalHurenUserId':'',
     'firstName':'Henk',
@@ -53,11 +54,13 @@ describe('Testing customers routes:', () => {
       .post('/api/customers/')
       .send(customer)
       .end((err,res)=>{
+        singleCustomerId = res.body.userId;
+        console.log('LOGID:'+singleCustomerId)
+
         chai.request(server)
-          .get('/api/customers/'+res.userId)
-          .end((err,response)=>{
-            response.should.have.status(200);
-            res.body.should.be.a('object');
+          .get('/api/customers/'+singleCustomerId)
+          .end((err,res)=>{
+            res.should.have.status(200);
             res.body.should.have.property('firstName','Henk'); //.that.has.property('Henk');
             res.body.should.have.property('lastName','Henkerson'); //.that.has.property('Henkerson');
             done();
@@ -73,8 +76,6 @@ describe('Testing customers routes:', () => {
 
         putId = res.body._id;
         customerId = res.body._id;
-
-        console.log('LOGID'+putId);
         chai.request(server)
           .put('/api/customers/'+putId)
           .send(putCustomer)
