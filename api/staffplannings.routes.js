@@ -21,7 +21,7 @@ routes.post('', function(req, res) {
 });
 
 //Get staffplanning using sportsfacility ID:
-routes.get('/sportsfacility/:sportsfacilityId', function(req, res) {
+routes.get('/sportsfacilities/:sportsfacilityId', function(req, res) {
     res.contentType('application/json');
     const sportsfacilityParam = req.params.sportsfacilityId
 
@@ -35,7 +35,7 @@ routes.get('/sportsfacility/:sportsfacilityId', function(req, res) {
 });
 
 //Get staffplanning using staffmember ID:
-routes.get('/staffmember/:staffmember', function(req, res) {
+routes.get('/staffmembers/:staffmember', function(req, res) {
     res.contentType('application/json');
     const staffmemberParam = req.params.staffmember
 
