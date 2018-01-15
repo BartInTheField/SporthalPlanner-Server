@@ -20,4 +20,46 @@ routes.post('', function(req, res) {
     });
 });
 
+//Get staffplanning using sportsfacility ID:
+routes.get('/sportsfacility/:sportsfacilityId', function(req, res) {
+    res.contentType('application/json');
+    const sportsfacilityParam = req.params.sportsfacilityId
+
+    StaffPlanning.find({sportsFacility: sportsfacilityParam})
+        .then((plannings) => {
+            res.status(200).json(plannings);
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        })
+});
+
+//Get staffplanning using staffmember ID:
+routes.get('/staffmember/:staffmember', function(req, res) {
+    res.contentType('application/json');
+    const staffmemberParam = req.params.staffmember
+
+    StaffPlanning.find({staffMember: staffmemberParam})
+        .then((plannings) => {
+            res.status(200).json(plannings);
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+});
+
+//Delete staffplanning using staffplanning ID:
+routes.delete('/:staffplanning', function(req, res) {
+    res.contentType('application/json');
+    const staffplanningParam = req.params.staffplanning
+
+    StaffPlanning.findByIdAndRemove(staffplanningParam)
+        .then((result) => {
+            res.status(200).json({Message: "Removed " + staffplanningParam + " with success"})
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+});
+
 module.exports = routes;
