@@ -13,7 +13,7 @@ const weekoverview = require('./api/weekoverview.routes');
 const closingdays = require('./api/closingdays.routes');
 const sportsFacility = require('./api/sportsfacility.routes');
 const customer = require('./api/customer.routes');
-const staffMember = require('./api/staffmember.routes');
+const staffMember = require('./api/staffmembers.routes');
 
 const app = express();
 
