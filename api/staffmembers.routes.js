@@ -53,4 +53,16 @@ routes.get('/:userId', function(req, res) {
 
 });
 
+//Delete a customer using customer id
+routes.delete('/:userId', function(req, res) {
+    const userId = req.params.userId;
+
+    StaffMember.findByIdAndRemove(userId)
+        .then(staffMember => res.status(200).json(staffMember))
+        .catch(error => {
+            res.status(401).json({message:'Error'})
+            console.log(error);
+        });
+}); 
+
 module.exports = routes;
