@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const SportsFacilities = require('./sportsfacility.model');
 const Schema = mongoose.Schema;
 
-const StaffPlaningSchema = new Schema({
+const StaffPlanningSchema = new Schema({
     day: {
         type: Date,
         required: [true, 'Day is required.']
@@ -27,6 +26,6 @@ const StaffPlaningSchema = new Schema({
     },
 });
 
-const StaffPlaning = mongoose.model('staffplanning', StaffPlaning);
+const StaffPlaning = mongoose.model('staffplanning', StaffPlanningSchema);
 
 module.exports = StaffPlaning;
