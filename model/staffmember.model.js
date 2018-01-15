@@ -12,7 +12,7 @@ const StaffMemberSchema = new Schema({
     },
     dateOfBirth: {
         type: Date,
-        default: false
+        default: new Date()
     },
 });
 
