@@ -26,6 +26,6 @@ const StaffPlanningSchema = new Schema({
     },
 });
 
-const StaffPlaning = mongoose.model('staffplanning', StaffPlanningSchema);
+const StaffPlanning = mongoose.model('staffplanning', StaffPlanningSchema);
 
-module.exports = StaffPlaning;
+module.exports = StaffPlanning;
