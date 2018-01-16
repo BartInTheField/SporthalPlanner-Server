@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const SportsHallSchema = require('./sportshall.model');
 
 const MaintenanceSchema = new Schema({
-    day: {
+    days: {
         type: [Date],
         required: [true, 'Day is required.']
     },
@@ -11,7 +11,7 @@ const MaintenanceSchema = new Schema({
         type: String,
         required: [true, 'Subject is required.']
     },
-    material: {
+    materials: {
         type: [String],
         required: [true, 'material is required.']
     },
@@ -19,7 +19,11 @@ const MaintenanceSchema = new Schema({
         type: String,
         required: false
     },
-    sportsHall: SportsHallSchema
+    sportsFacility: {
+        type: Schema.ObjectId,
+        ref: 'sportsfacility',
+        required: [true, 'sportsfacility is required']
+    },
 });
 
 const Maintenance = mongoose.model('maintenance', MaintenanceSchema);
