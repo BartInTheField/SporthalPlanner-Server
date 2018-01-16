@@ -15,6 +15,7 @@ const sportsFacility = require('./api/sportsfacility.routes');
 const customer = require('./api/customer.routes');
 const staffMember = require('./api/staffmembers.routes');
 const staffPlanning = require('./api/staffplannings.routes');
+const maintenance = require('./api/maintenances.routes');
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use('/api/sportsfacilities', sportsFacility);
 app.use('/api/customers', customer);
 app.use('/api/staffmembers', staffMember);
 app.use('/api/staffplannings', staffPlanning);
+app.use('/api/maintenances', maintenance);
 
 //Default routes:
 app.use('*', function(req, res) {
