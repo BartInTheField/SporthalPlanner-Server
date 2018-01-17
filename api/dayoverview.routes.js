@@ -22,13 +22,15 @@ routes.get('/:userid/:facilityid/:date', function(req, res) {
             console.log(response);
         } else {
             let result = [];
+          if(!response.message) {
             response.forEach(element => {
-                if((parsedDate === element.day.substring(0,10)) 
-                    && (userId == element._embedded.SportsFacility.userId)
-                    && (facilityId == element._embedded.SportsFacility.sportsFacilityId)){
-                    result.push(element);
-                }
+              if ((parsedDate === element.day.substring(0, 10))
+                && (userId == element._embedded.SportsFacility.userId)
+                && (facilityId == element._embedded.SportsFacility.sportsFacilityId)) {
+                result.push(element);
+              }
             });
+          }
             res.status(200).json(result);
         }
     });

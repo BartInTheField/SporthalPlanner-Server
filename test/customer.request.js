@@ -55,7 +55,6 @@ describe('Testing customers routes:', () => {
       .send(customer)
       .end((err,res)=>{
         singleCustomerId = res.body.userId;
-        console.log('LOGID:'+singleCustomerId)
 
         chai.request(server)
           .get('/api/customers/'+singleCustomerId)

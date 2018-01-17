@@ -14,4 +14,7 @@ const SportsHallSchema = new Schema({
 
 const SportsHall = mongoose.model('sportshall', SportsHallSchema);
 
-module.exports = SportsHall;
+module.exports = {
+    SportsHall, 
+    SportsHallSchema
+    };

@@ -24,22 +24,24 @@ routes.get('/:userid/:facilityid/:date', function(req, res) {
             console.log(response);
         } else {
             let result = [];
-
-            for(let i = 0;i < 7;i++){   
+            if(!response.message){
+              for(let i = 0;i < 7;i++){
                 response.forEach(element => {
-                    
-                    if(element.day.substring(0,10) === moment(dateWrapper).add(i,'day').format('YYYY-MM-DD').toString()){
-                        if(result[i])
-                            result[i].push(element);
-                        else{
-                            result[i] = [];
-                            result[i].push(element);
-                        }
+
+                  if(element.day.substring(0,10) === moment(dateWrapper).add(i,'day').format('YYYY-MM-DD').toString()){
+                    if(result[i])
+                      result[i].push(element);
+                    else{
+                      result[i] = [];
+                      result[i].push(element);
                     }
+                  }
                 });
                 if(!result[i])
-                    result[i] = null;
+                  result[i] = null;
+              }
             }
+
             res.status(200).json(result);
         }
     });

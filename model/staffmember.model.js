@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 const StaffMemberSchema = new Schema({
     firstName: {
         type: String,
-        required: [true]
+        required: [true, 'firstName is required.']
     },
     lastName: {
         type: String,
-        required: [true]
+        required: [true, 'lastName is required.']
     },
     dateOfBirth: {
         type: Date,

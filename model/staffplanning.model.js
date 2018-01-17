@@ -17,12 +17,12 @@ const StaffPlanningSchema = new Schema({
     sportsFacility: {
         type: Schema.ObjectId,
         ref: 'sportsfacility',
-        required: [true, 'Sportfacility is required']
+        required: [true, 'Sportfacility is required.']
     },
     staffMember: {
         type: Schema.ObjectId,
         ref: 'staffmember',
-        required: [true, 'Staffmember is required']
+        required: [true, 'Staffmember is required.']
     },
 });
 
