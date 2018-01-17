@@ -47,4 +47,18 @@ routes.get('/:maintenanceId', function(req, res) {
             console.log(error);
         });
 });
+
+routes.delete('/:maintenanceId', function(req,res) {
+
+    const maintenanceId = req.params.maintenanceId;
+
+    Maintenance.findByIdAndRemove(maintenanceId)
+        .then((maintenance) => {
+            res.status(200).json(maintenance);
+        })
+        .catch(error => {
+            res.status(400).json(error);
+            console.log(error);
+        })
+});
 module.exports = routes;
