@@ -60,14 +60,12 @@ routes.get('/', function(req, res, done) {
                                             //Send response only when all items are saved
                                             if(amountSaved === aspCount) {
                                                 res.status(200).json(mongoFacilities);
-                                                done();
                                             }
                                         });
                                 }
                         })
                     } else {
                         res.status(200).json(existingSportsfacilities);
-                        done();
                     }
                 });
         }

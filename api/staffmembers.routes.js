@@ -60,7 +60,7 @@ routes.delete('/:userId', function(req, res) {
     StaffMember.findByIdAndRemove(userId)
         .then(staffMember => res.status(200).json(staffMember))
         .catch(error => {
-            res.status(401).json({message:'Error'})
+            res.status(401).json({message:'Error'});
             console.log(error);
         });
 }); 
