@@ -20,4 +20,31 @@ routes.post('', function(req, res) {
     });
 });
 
+//Retrieve maintenances
+routes.get('', function(req, res) {
+
+    Maintenance.find({})
+        .then((maintenances) => {
+            res.status(200).json(maintenances);
+        })
+        .catch(error => {
+            res.status(401).json({message:'Error'})
+            console.log(error);
+        });
+});
+
+//Retrieve one maintenance
+routes.get('/:maintenanceId', function(req, res) {
+    
+    const maintenanceId = req.params.maintenanceId;
+
+    Maintenance.findById(maintenanceId)
+        .then((maintenance) => {
+            res.status(200).json(maintenance);
+        })
+        .catch(error => {
+            res.status(401).json({message:'Error'})
+            console.log(error);
+        });
+});
 module.exports = routes;
