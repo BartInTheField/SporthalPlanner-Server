@@ -20,6 +20,19 @@ routes.post('', function(req, res) {
     });
 });
 
+//Update maintenance data from a maintenance id
+routes.put('/:maintenanceId', function(req, res) {
+    const maintenanceId = req.params.maintenanceId;
+    const maintenance = req.body;
+    Maintenance.findByIdAndUpdate({_id: maintenanceId}, maintenance)
+        .then((maintenance) => Maintenance.findById({_id: maintenanceId})
+        .then((maintenance) => res.status(200).json(maintenance)))
+        .catch(error => {
+            res.status(401).json({message:'Error'})
+            console.log(error);
+        });
+});
+
 //Retrieve maintenances
 routes.get('', function(req, res) {
 
