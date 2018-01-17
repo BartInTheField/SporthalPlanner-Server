@@ -67,7 +67,6 @@ routes.post('/', function(req, res) {
 
     req.body.password = hash;
     const userReq = req.body;
-    console.log(req.body);
 
     User.create(userReq)
         .then(user => res.status(200).send(user))
