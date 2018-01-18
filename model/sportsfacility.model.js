@@ -24,6 +24,10 @@ const SportsFacilitySchema = new Schema({
         type: String,
         required: true
     },
+    userId: {
+        type: String,
+        require: true
+    },
     openingHours: OpeningHours,
     sportsHalls: [{
         type: Schema.ObjectId,
