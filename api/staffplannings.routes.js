@@ -2,6 +2,7 @@
 var express = require('express');
 var routes = express.Router();
 const StaffPlanning = require('../model/staffplanning.model');
+const StaffMember = require('../model/staffmember.model');
 const API = require('../config/api_requester');
 
 //Add staffplanning:
@@ -27,10 +28,22 @@ routes.get('/sportsfacilities/:sportsfacilityId', function(req, res) {
 
     StaffPlanning.find({sportsFacility: sportsfacilityParam})
         .then((plannings) => {
-            res.status(200).json(plannings);
+            plannings.forEach(element => {
+                StaffMember.findById(element.staffMember)
+                .then((staffMember) => {
+                    element.staffMember = staffMember;
+                })
+                .catch(error => {
+                    res.status(401).json({message:'Error'})
+                });    
+            });
+            setTimeout(() => {
+                res.status(200).json(plannings);
+            }, 500);
         })
         .catch((error) => {
             res.status(400).json(error);
+            console.log('hierzoooooo');
         })
 });
 
@@ -41,7 +54,16 @@ routes.get('/staffmembers/:staffmember', function(req, res) {
 
     StaffPlanning.find({staffMember: staffmemberParam})
         .then((plannings) => {
-            res.status(200).json(plannings);
+            StaffMember.findById(staffmemberParam)
+            .then((staffMember) => {
+                plannings.forEach(element => {
+                    element.staffMember = staffMember;    
+                });
+                res.status(200).json(plannings);
+            })
+            .catch(error => {
+                res.status(401).json({message:'Error'})
+            });
         })
         .catch((error) => {
             res.status(400).json(error);
