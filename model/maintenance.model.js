@@ -13,7 +13,7 @@ const MaintenanceSchema = new Schema({
     },
     materials: {
         type: [String],
-        required: [true, 'material is required.']
+        required: [true, 'Material is required.']
     },
     reason: {
         type: String,
@@ -22,7 +22,7 @@ const MaintenanceSchema = new Schema({
     sportsFacility: {
         type: Schema.ObjectId,
         ref: 'sportsfacility',
-        required: [true, 'sportsfacility is required']
+        required: [true, 'SportsFacility is required.']
     },
 });
 
