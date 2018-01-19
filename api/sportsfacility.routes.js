@@ -45,6 +45,7 @@ routes.get('/', function(req, res, done) {
                                     sportsFacility.city = response[i].city;
                                     sportsFacility.phone = response[i].phone;
                                     sportsFacility.email = response[i].email;
+                                    sportsFacility.id = response[i].sportsFacilityId;
                                     sportsFacility.userId = response[i]._embedded.SportsHalls[0] ?  response[i]._embedded.SportsHalls[0].sportsFacility.userId : null;
                                     sportsFacility.openingHours = response[i]._embedded.SportsHalls[0] ?  response[i]._embedded.SportsHalls[0].sportsFacility.openingHours : null;
                                     for(let j = 0; j < response[i]._embedded.SportsHalls; j++) {

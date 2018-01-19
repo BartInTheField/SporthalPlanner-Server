@@ -19,7 +19,9 @@ const BookingSchema = new Schema({
         type: String,
         required: [true, 'User ID is required.']
     },
-    sportsHallField: SportsHallField,
+    sportsFacility: {
+        type: Object,
+    },
     status: Number
 });
 

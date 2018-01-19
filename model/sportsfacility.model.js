@@ -32,7 +32,8 @@ const SportsFacilitySchema = new Schema({
     sportsHalls: [{
         type: Schema.ObjectId,
         ref: 'sportshall'
-    }]
+    }],
+    id : Number
 });
 
 const SportsFacility = mongoose.model('sportsfacility', SportsFacilitySchema);

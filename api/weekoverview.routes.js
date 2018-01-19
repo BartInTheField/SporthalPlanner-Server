@@ -3,6 +3,7 @@ var express = require('express');
 var routes = express.Router();
 
 const Booking = require('../model/booking.model');
+const SportsFacility = require('../model/sportsfacility.model');
 const API = require('../config/api_requester');
 const moment = require('moment');
 
@@ -18,33 +19,45 @@ routes.get('/:userid/:facilityid/:date', function(req, res) {
     let parsedDate = new Date(year,month-1,day);
     let dateWrapper = moment(parsedDate).format('YYYY-MM-DD');
 
-    API.request('/api/bookings', 'GET', {}, (response) => {
-        if (response.error) {
-            res.status(400).json({ error: 'Could not retrieve all bookings' });
-            console.log(response);
-        } else {
-            let result = [];
-            if(!response.message){
-              for(let i = 0;i < 7;i++){
-                response.forEach(element => {
-
-                  if(element.day.substring(0,10) === moment(dateWrapper).add(i,'day').format('YYYY-MM-DD').toString()){
-                    if(result[i])
-                      result[i].push(element);
-                    else{
-                      result[i] = [];
-                      result[i].push(element);
+    Booking.find({})
+      .then((bookings) => {
+        
+        let result = [];
+        for(let i = 0;i < 7;i++){
+          bookings.forEach(element => {
+              
+            if(moment(element.day).subtract(1,'day').format('YYYY-MM-DD') === moment(dateWrapper).add(i,'day').format('YYYY-MM-DD').toString()
+            && (userId == element.sportsFacility.userId)){
+              SportsFacility.findById(facilityId)
+                .then((facility) => {
+                  if(facility){
+                    if(facility.id == element.sportsFacility.sportsFacilityId){
+                      if(result[i])
+                        result[i].push(element);
+                      else{
+                        result[i] = [];
+                        result[i].push(element);
+                      }
                     }
                   }
-                });
-                if(!result[i])
-                  result[i] = null;
-              }
+                })
+                .catch((error) => {
+                  console.log(error);
+                })
             }
-
-            res.status(200).json(result);
+          });
+          if(!result[i])
+            result[i] = null;
         }
-    });
+        setTimeout(() => {
+          res.status(200).json(result);
+
+        },500);
+      })
+      .catch((error) => {
+        res.status(400).json(error);
+      });
+
 });
 
 module.exports = routes;
