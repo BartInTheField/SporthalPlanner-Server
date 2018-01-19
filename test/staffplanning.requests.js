@@ -69,39 +69,6 @@ describe('Staffplanning requests', () => {
                 }))
     });
 
-
-    it('Can post a StaffPlanning to the NoSQL server', (done) => {
-        
-        postBody = new Staffplanning({
-            day: '2018-01-28T00:00:00.000',
-            startingTime: '12:00',
-            endingTime: '16:00',
-            sportsFacility: sportsFacilityId,
-            staffMember: staffMemberId
-        });
-
-        chai.request(server)
-            .post('/api/staffplannings')
-            .send(postBody)
-            .end((err, res) => {
-                //test response
-                res.should.have.status(200);
-                res.body.should.be.a('object');
-
-                //properties the body should have:
-                res.body.should.have.property('day');
-                res.body.should.have.property('startingTime');
-                res.body.should.have.property('endingTime');
-                res.body.should.have.property('sportsFacility');
-                res.body.should.have.property('staffMember');
-
-                Staffplanning.findByIdAndRemove(res.body._id)
-                    .then((res) => {
-                        done();
-                    })
-        });
-    });
-
     it('Can get all StaffPlannings by SportsFacility', (done) => {
         chai.request(server)
             .get('/api/staffplannings/sportsfacilities/' + sportsFacilityId)
